@@ -1,11 +1,13 @@
-FROM iamliquidx/mirleechxsdk:21e1a2aa3057d82002a9a1962e14cd992a6f6d6a
+FROM ghcr.io/amirulandalib/mltb-alpine-docker:latest
 
-WORKDIR /usr/src/app
-RUN chmod 777 /usr/src/app
-
-COPY requirements.txt .
-RUN pip3 install --no-cache-dir -r requirements.txt
+# if you want to load image from dockerhub then replace the above one with this one 👇
+# FROM amirulandalib/mltb-alpine-docker:latest
+# FROM ghcr.io/amirulandalib/mltb-alpine-docker:latest
 
 COPY . .
+
+WORKDIR /usr/src/app
+
+RUN chmod 777 /usr/src/app
 
 CMD ["bash", "start.sh"]
